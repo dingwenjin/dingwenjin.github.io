@@ -171,7 +171,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>import pygal<br>from random import randint</p>
+<p>from pylab import *<br>mpl.rcParams[‘font.sans-serif’] = [‘SimHei’]      #解决中文字体</p>
+<p>class Die():<br>    def <strong>init</strong>(self,num_sides=6):<br>        self.num_sides = num_sides</p>
+<pre><code>def roll(self):
+    return randint(1,self.num_sides+1)
+</code></pre><p>def rolling_result(die):<br>    results = []<br>    for roll_num in range(100000):<br>        result = die.roll()<br>        results.append(result)<br>    return results</p>
+<p>def sides_frequency(die,results):<br>    frequencies = []<br>    for value in range(1,die.num_sides+1):<br>        frequency = results.count(value)<br>        frequencies.append(frequency)<br>    return frequencies</p>
+<p>def drawing(frequencies):</p>
+<pre><code>hlist = pygal.Bar()
+hlist.title = &quot;置骰子10万次各个点数频率分布结果图&quot;
+hlist.x_labels = [&apos;1&apos;,&apos;2&apos;,&apos;3&apos;,&apos;4&apos;,&apos;5&apos;,&apos;6&apos;]
+hlist.x_title = &quot;骰子的各个点数&quot;
+hlist.y_title = &quot;频率分布&quot;
+hlist.add(&apos;D6&apos;,frequencies)
+hlist.render_to_file(&apos;die_visual_svg&apos;)                                              #生成
+</code></pre><p>def main():<br>    die = Die()<br>    results = rolling_result(die)<br>    frequencies = sides_frequency(die,results)<br>    drawing(frequencies)</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    main()</p>
+
       
 
       
