@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | DWJ</title>
+  <title>Linux下多个C++文件链接编译 | DWJ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DWJ">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="一、         首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下： Myinclude下的头文件如下： /* &amp;gt; File Name: big_data_multi.h &amp;gt; Author: DWJ &amp;gt; Mail:  &amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux下多个C++文件链接编译">
+<meta property="og:url" content="http://yoursite.com/2018/01/01/Linux下多个C-文件链接编译/index.html">
 <meta property="og:site_name" content="DWJ">
+<meta property="og:description" content="一、         首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下： Myinclude下的头文件如下： /* &amp;gt; File Name: big_data_multi.h &amp;gt; Author: DWJ &amp;gt; Mail:  &amp;g">
+<meta property="og:updated_time" content="2018-01-01T11:47:57.905Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DWJ">
+<meta name="twitter:title" content="Linux下多个C++文件链接编译">
+<meta name="twitter:description" content="一、         首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下： Myinclude下的头文件如下： /* &amp;gt; File Name: big_data_multi.h &amp;gt; Author: DWJ &amp;gt; Mail:  &amp;g">
   
     <link rel="alternative" href="/atom.xml" title="DWJ" type="application/atom+xml">
   
@@ -149,76 +153,213 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Linux下多个C-文件链接编译" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Linux下多个C++文件链接编译
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/01/Linux下多个C-文件链接编译/" class="archive-article-date">
+
+        
+        <a href="/2018/01/01/Linux下多个C-文件链接编译/" class="archive-article-date">
   	<time datetime="2018-01-01T11:45:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-01</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/01/Linux下多个C-文件链接编译/">Linux下多个C++文件链接编译</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、<br>         首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下：</p>
+<p>Myinclude下的头文件如下：</p>
+<p>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<pre><code>&gt; File Name: big_data_multi.h
+&gt; Author: DWJ
+&gt; Mail: 
+&gt; Created Time: Thu 21 Dec 2017 06:42:10 PM PST
+</code></pre><p> <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>#ifndef _BIG_DATA_MULTI_HEAD_H</p>
+<p>#define _BIG_DATA_MULTI_HEAD_H</p>
+<p>#include<string><br>using std::string;</string></p>
+<p>void big_data_multi(string,string);</p>
+<p>#endif</p>
+<p>Myinclude下的源文件如下：<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<pre><code>&gt; File Name: big_data_multi.cpp
+&gt; Author: DWJ
+&gt; Mail: 
+&gt; Created Time: Thu 21 Dec 2017 06:44:38 PM PST
+</code></pre><p> <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>#include “big_data_multi_head.h”</p>
+<p>#include <iostream></iostream></p>
+<p>#include <string></string></p>
+<p>#include <algorithm><br>using namespace std;</algorithm></p>
+<p>void big_data_multi(string s1,string s2){<br>    int len1=s1.size(),len2=s2.size(),i,j,carry=0;<br>    string result(len1+len2,’0’);<br>    reverse(s1.begin(),s1.end());<br>    reverse(s2.begin(),s2.end());</p>
+<pre><code>for(i=0;i&lt;len1;i++){
+    for(j=0;j&lt;len2;j++){
+        carry=(s1[i]-&apos;0&apos;)*(s2[j]-&apos;0&apos;)+result[i+j]-&apos;0&apos;;
+        result[i+j]=carry%10+&apos;0&apos;;
+        carry/=10;
 
-        <div class="article-info info-on-right">
-          
-          
+    }
+    if(carry)
+        result[i+len2]=carry%10+&apos;0&apos;;
+    carry=0;
 
+}
+reverse(result.begin(),result.end());
+if(result[0]==&apos;0&apos;)
+    cout&lt;&lt;result.substr(1)&lt;&lt;endl;
+else
+    cout&lt;&lt;result&lt;&lt;endl;
+</code></pre><p>}</p>
+<p>src目录下的主文件内容如下：<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<pre><code>&gt; File Name: big_data_multi.cpp
+&gt; Author: DWJ
+&gt; Mail: 
+&gt; Created Time: Thu 21 Dec 2017 06:44:38 PM PST
+</code></pre><p> <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>#include “../myinclude/big_data_multi_head.h”</p>
+<p>#include <iostream></iostream></p>
+<p>#include <string><br>using std::string;<br>using std::cin;</string></p>
+<p>int main(int argc,char** argv){<br>    string s1,s2;<br>    while(cin&gt;&gt;s1&gt;&gt;s2)<br>        big_data_multi(s1,s2);<br>    return 0;<br>}</p>
+<p>方式一：<br>编译的过程如下：<br>首先对big_data_multi_head.cpp文件进行编译，因为不事先编译这个文件，而直接编译主文件的话就会出错，出错原因是没有找到主文件调用的函数体。编译后的结果如下：</p>
+<p>然后对主文件进行编译，形成可执行的main文件：</p>
+<p>最后执行main文件：</p>
+<p>方式二：<br>编译的过程如下：<br>首先对big_data_multi_head.cpp文件进行编译，因为不事先编译这个文件，而直接编译主文件的话就会出错，出错原因是没有找到主文件调用的函数体。编译后的结果如下：</p>
+<p>然后对主文件进行编译，形成可执行的main文件：</p>
+<p>最后执行main文件：</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/01/Linux下多个C-文件链接编译/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/01/hello-world/" class="archive-article-date">
-  	<time datetime="2018-01-01T10:43:54.275Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/01/hello-world/">Hello World</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -241,8 +382,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
