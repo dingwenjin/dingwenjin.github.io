@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Linux下多个C-文件链接编译 | DWJ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、   首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下：Myinclude下的头文件如下： /* &amp;gt; File Name: big_data_multi.h &amp;gt; Author: DWJ &amp;gt; Mail:  &amp;gt; Crea">
+  <meta name="description" content="一、首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下： Myinclude下的头文件如下：/** &amp;gt; File Name: big_data_multi.h &amp;gt; Author: DWJ &amp;gt; Mail:  &amp;gt; Create">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux下多个C-文件链接编译">
 <meta property="og:url" content="http://yoursite.com/2018/01/01/Linux下多个C-文件链接编译/index.html">
 <meta property="og:site_name" content="DWJ">
-<meta property="og:description" content="一、   首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下：Myinclude下的头文件如下： /* &amp;gt; File Name: big_data_multi.h &amp;gt; Author: DWJ &amp;gt; Mail:  &amp;gt; Crea">
+<meta property="og:description" content="一、首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下： Myinclude下的头文件如下：/** &amp;gt; File Name: big_data_multi.h &amp;gt; Author: DWJ &amp;gt; Mail:  &amp;gt; Create">
 <meta property="og:image" content="http://yoursite.com/2018/01/01/Linux下多个C-文件链接编译/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/01/Linux下多个C-文件链接编译/2.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/01/Linux下多个C-文件链接编译/3.png">
@@ -21,10 +21,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/01/01/Linux下多个C-文件链接编译/5.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/01/Linux下多个C-文件链接编译/6.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/01/Linux下多个C-文件链接编译/7.png">
-<meta property="og:updated_time" content="2018-01-01T15:58:02.650Z">
+<meta property="og:updated_time" content="2018-01-01T16:05:52.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下多个C-文件链接编译">
-<meta name="twitter:description" content="一、   首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下：Myinclude下的头文件如下： /* &amp;gt; File Name: big_data_multi.h &amp;gt; Author: DWJ &amp;gt; Mail:  &amp;gt; Crea">
+<meta name="twitter:description" content="一、首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下： Myinclude下的头文件如下：/** &amp;gt; File Name: big_data_multi.h &amp;gt; Author: DWJ &amp;gt; Mail:  &amp;gt; Create">
 <meta name="twitter:image" content="http://yoursite.com/2018/01/01/Linux下多个C-文件链接编译/1.png">
   
     <link rel="alternative" href="/atom.xml" title="DWJ" type="application/atom+xml">
@@ -181,8 +181,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、<br>   首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/1.png" alt="1"><br>Myinclude下的头文件如下：</p>
-<p>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+        <p>一、首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/1.png" alt="1"></p>
+<p>Myinclude下的头文件如下：<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
 <pre><code>&gt; File Name: big_data_multi.h
 &gt; Author: DWJ
 &gt; Mail: 
@@ -190,8 +190,7 @@
 </code></pre><p> <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
 <p>#ifndef _BIG_DATA_MULTI_HEAD_H</p>
 <p>#define _BIG_DATA_MULTI_HEAD_H</p>
-<p>#include<string><br>using std::string;</string></p>
-<p>void big_data_multi(string,string);</p>
+<p>#include<string><br>using std::string;<br>void big_data_multi(string,string);</string></p>
 <p>#endif</p>
 <p>Myinclude下的源文件如下：<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
 <pre><code>&gt; File Name: big_data_multi.cpp
@@ -203,25 +202,7 @@
 <p>#include <iostream></iostream></p>
 <p>#include <string></string></p>
 <p>#include <algorithm><br>using namespace std;</algorithm></p>
-<p>void big_data_multi(string s1,string s2){<br>    int len1=s1.size(),len2=s2.size(),i,j,carry=0;<br>    string result(len1+len2,’0’);<br>    reverse(s1.begin(),s1.end());<br>    reverse(s2.begin(),s2.end());</p>
-<pre><code>for(i=0;i&lt;len1;i++){
-    for(j=0;j&lt;len2;j++){
-        carry=(s1[i]-&apos;0&apos;)*(s2[j]-&apos;0&apos;)+result[i+j]-&apos;0&apos;;
-        result[i+j]=carry%10+&apos;0&apos;;
-        carry/=10;
-
-    }
-    if(carry)
-        result[i+len2]=carry%10+&apos;0&apos;;
-    carry=0;
-
-}
-reverse(result.begin(),result.end());
-if(result[0]==&apos;0&apos;)
-    cout&lt;&lt;result.substr(1)&lt;&lt;endl;
-else
-    cout&lt;&lt;result&lt;&lt;endl;
-</code></pre><p>}</p>
+<p>void big_data_multi(string s1,string s2) {<br>    int len1=s1.size(),len2=s2.size(),i,j,carry=0;<br>    string result(len1+len2,’0’);<br>    reverse(s1.begin(),s1.end());<br>    reverse(s2.begin(),s2.end());<br>    for(i=0;i&lt;len1;i++){<br>        for(j=0;j&lt;len2;j++){<br>            carry=(s1[i]-‘0’)*(s2[j]-‘0’)+result[i+j]-‘0’;<br>            result[i+j]=carry%10+’0’;<br>            carry/=10;<br>        }<br>        if(carry)<br>            result[i+len2]=carry%10+’0’;<br>        carry=0;<br>    }<br>    reverse(result.begin(),result.end());<br>    if(result[0]==’0’)<br>        cout&lt;&lt;result.substr(1)&lt;&lt;endl;<br>    else<br>        cout&lt;&lt;result&lt;&lt;endl;<br>}</p>
 <p>src目录下的主文件内容如下：<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
 <pre><code>&gt; File Name: big_data_multi.cpp
 &gt; Author: DWJ
@@ -232,7 +213,12 @@ else
 <p>#include <iostream></iostream></p>
 <p>#include <string><br>using std::string;<br>using std::cin;</string></p>
 <p>int main(int argc,char** argv){<br>    string s1,s2;<br>    while(cin&gt;&gt;s1&gt;&gt;s2)<br>        big_data_multi(s1,s2);<br>    return 0;<br>}</p>
-<p>方式一：<br>编译的过程如下：<br>首先对big_data_multi_head.cpp文件进行编译，因为不事先编译这个文件，而直接编译主文件的话就会出错，出错原因是没有找到主文件调用的函数体。编译后的结果如下：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/2.png" alt="2"><br>然后对主文件进行编译，形成可执行的main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/3.png" alt="3"><br>最后执行main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/4.png" alt="4"><br>方式二：<br>编译的过程如下：<br>首先对big_data_multi_head.cpp文件进行编译，因为不事先编译这个文件，而直接编译主文件的话就会出错，出错原因是没有找到主文件调用的函数体。编译后的结果如下：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/5.png" alt="5"><br>然后对主文件进行编译，形成可执行的main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/6.png" alt="6"><br>最后执行main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/7.png" alt="7"></p>
+<p>方式一：<br>编译的过程如下：<br>首先对big_data_multi_head.cpp文件进行编译，因为不事先编译这个文件，而直接编译主文件的话就会出错，出错原因是没有找到主文件调用的函数体。编译后的结果如下：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/2.png" alt="2"></p>
+<p>然后对主文件进行编译，形成可执行的main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/3.png" alt="3"></p>
+<p>最后执行main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/4.png" alt="4"></p>
+<p>方式二：<br>编译的过程如下：<br>首先对big_data_multi_head.cpp文件进行编译，因为不事先编译这个文件，而直接编译主文件的话就会出错，出错原因是没有找到主文件调用的函数体。编译后的结果如下：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/5.png" alt="5"></p>
+<p>然后对主文件进行编译，形成可执行的main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/6.png" alt="6"></p>
+<p>最后执行main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/7.png" alt="7"></p>
 
       
 
