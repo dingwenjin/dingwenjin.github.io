@@ -151,75 +151,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Python-置筛子结果" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/01/Python-置筛子结果/">Python 置筛子结果</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/01/Python-置筛子结果/" class="archive-article-date">
-  	<time datetime="2018-01-01T13:32:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>import pygal<br>from random import randint<br>from pylab import *<br>mpl.rcParams[‘font.sans-serif’] = [‘SimHei’]      #解决中文字体</p>
-<p>class Die():<br>    def <strong>init</strong>(self,num_sides=6):<br>        self.num_sides = num_sides<br>    def roll(self):<br>        return randint(1,self.num_sides+1)</p>
-<p>def rolling_result(die):<br>    results = []<br>    for roll_num in range(100000):<br>        result = die.roll()<br>        results.append(result)<br>    return results</p>
-<p>def sides_frequency(die,results):<br>    frequencies = []<br>    for value in range(1,die.num_sides+1):<br>        frequency = results.count(value)<br>        frequencies.append(frequency)<br>    return frequencies</p>
-<p>def drawing(frequencies):<br>    hlist = pygal.Bar()<br>    hlist.title = “置骰子10万次各个点数频率分布结果图”<br>    hlist.x_labels = [‘1’,’2’,’3’,’4’,’5’,’6’]<br>    hlist.x_title = “骰子的各个点数”<br>    hlist.y_title = “频率分布”<br>    hlist.add(‘D6’,frequencies)<br>    hlist.render_to_file(‘die_visual_svg’)                                              #生成</p>
-<p>def main():<br>    die = Die()<br>    results = rolling_result(die)<br>    frequencies = sides_frequency(die,results)<br>    drawing(frequencies)</p>
-<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    main()</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/01/Python-置筛子结果/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Linux下多个C-文件链接编译" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -227,21 +158,20 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/01/Linux下多个C-文件链接编译/">Linux下多个C++文件链接编译</a>
+      <a class="article-title" href="/2018/01/01/Linux下多个C-文件链接编译/">Linux下多个C-文件链接编译</a>
     </h1>
   
 
         
         <a href="/2018/01/01/Linux下多个C-文件链接编译/" class="archive-article-date">
-  	<time datetime="2018-01-01T11:45:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-01</time>
+  	<time datetime="2018-01-01T15:20:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、<br>         首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下：</p>
-<p>Myinclude下的头文件如下：</p>
+        <p>一、<br>   首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/1.png" alt="1"><br>Myinclude下的头文件如下：</p>
 <p>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
 <pre><code>&gt; File Name: big_data_multi.h
 &gt; Author: DWJ
@@ -292,12 +222,7 @@ else
 <p>#include <iostream></iostream></p>
 <p>#include <string><br>using std::string;<br>using std::cin;</string></p>
 <p>int main(int argc,char** argv){<br>    string s1,s2;<br>    while(cin&gt;&gt;s1&gt;&gt;s2)<br>        big_data_multi(s1,s2);<br>    return 0;<br>}</p>
-<p>方式一：<br>编译的过程如下：<br>首先对big_data_multi_head.cpp文件进行编译，因为不事先编译这个文件，而直接编译主文件的话就会出错，出错原因是没有找到主文件调用的函数体。编译后的结果如下：</p>
-<p>然后对主文件进行编译，形成可执行的main文件：</p>
-<p>最后执行main文件：</p>
-<p>方式二：<br>编译的过程如下：<br>首先对big_data_multi_head.cpp文件进行编译，因为不事先编译这个文件，而直接编译主文件的话就会出错，出错原因是没有找到主文件调用的函数体。编译后的结果如下：</p>
-<p>然后对主文件进行编译，形成可执行的main文件：</p>
-<p>最后执行main文件：</p>
+<p>方式一：<br>编译的过程如下：<br>首先对big_data_multi_head.cpp文件进行编译，因为不事先编译这个文件，而直接编译主文件的话就会出错，出错原因是没有找到主文件调用的函数体。编译后的结果如下：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/2.png" alt="2"><br>然后对主文件进行编译，形成可执行的main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/3.png" alt="3"><br>最后执行main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/4.png" alt="4"><br>方式二：<br>编译的过程如下：<br>首先对big_data_multi_head.cpp文件进行编译，因为不事先编译这个文件，而直接编译主文件的话就会出错，出错原因是没有找到主文件调用的函数体。编译后的结果如下：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/5.png" alt="5"><br>然后对主文件进行编译，形成可执行的main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/6.png" alt="6"><br>最后执行main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/7.png" alt="7"></p>
 
       
 
@@ -311,6 +236,75 @@ else
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/01/01/Linux下多个C-文件链接编译/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python-置筛子结果" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/01/Python-置筛子结果/">Python 置筛子结果</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/01/Python-置筛子结果/" class="archive-article-date">
+  	<time datetime="2018-01-01T13:32:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>import pygal<br>from random import randint<br>from pylab import *<br>mpl.rcParams[‘font.sans-serif’] = [‘SimHei’]      #解决中文字体</p>
+<p>class Die():<br>    def <strong>init</strong>(self,num_sides=6):<br>        self.num_sides = num_sides<br>    def roll(self):<br>        return randint(1,self.num_sides+1)</p>
+<p>def rolling_result(die):<br>    results = []<br>    for roll_num in range(100000):<br>        result = die.roll()<br>        results.append(result)<br>    return results</p>
+<p>def sides_frequency(die,results):<br>    frequencies = []<br>    for value in range(1,die.num_sides+1):<br>        frequency = results.count(value)<br>        frequencies.append(frequency)<br>    return frequencies</p>
+<p>def drawing(frequencies):<br>    hlist = pygal.Bar()<br>    hlist.title = “置骰子10万次各个点数频率分布结果图”<br>    hlist.x_labels = [‘1’,’2’,’3’,’4’,’5’,’6’]<br>    hlist.x_title = “骰子的各个点数”<br>    hlist.y_title = “频率分布”<br>    hlist.add(‘D6’,frequencies)<br>    hlist.render_to_file(‘die_visual_svg’)                                              #生成</p>
+<p>def main():<br>    die = Die()<br>    results = rolling_result(die)<br>    frequencies = sides_frequency(die,results)<br>    drawing(frequencies)</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    main()</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/01/Python-置筛子结果/">展开全文 >></a>
         </p>
       
 
