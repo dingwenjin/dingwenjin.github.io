@@ -180,7 +180,7 @@
 </code></pre><p> <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
 <p>#ifndef _BIG_DATA_MULTI_HEAD_H</p>
 <p>#define _BIG_DATA_MULTI_HEAD_H</p>
-<p>#include<string><br>using std::string;<br>void big_data_multi(string,string);</string></p>
+<p>#include &lt;string&gt;<br>using std::string;<br>void big_data_multi(string,string);</p>
 <p>#endif</p>
 <p>Myinclude下的源文件如下：<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
 <pre><code>&gt; File Name: big_data_multi.cpp
@@ -189,9 +189,9 @@
 &gt; Created Time: Thu 21 Dec 2017 06:44:38 PM PST
 </code></pre><p> <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
 <p>#include “big_data_multi_head.h”</p>
-<p>#include <iostream></iostream></p>
-<p>#include <string></string></p>
-<p>#include <algorithm><br>using namespace std;</algorithm></p>
+<p>#include &lt;iostream&gt;</p>
+<p>#include &lt;string&gt;</p>
+<p>#include &lt;algorithm&gt;<br>using namespace std;</p>
 <p>void big_data_multi(string s1,string s2) {<br>&nbsp;&nbsp;&nbsp;&nbsp;int len1=s1.size(),len2=s2.size(),i,j,carry=0;<br>&nbsp;&nbsp;&nbsp;&nbsp;string result(len1+len2,’0’);<br>&nbsp;&nbsp;&nbsp;&nbsp;reverse(s1.begin(),s1.end());<br>&nbsp;&nbsp;&nbsp;&nbsp;reverse(s2.begin(),s2.end());<br>&nbsp;&nbsp;&nbsp;&nbsp;for(i=0;i&lt;len1;i++){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(j=0;j&lt;len2;j++){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carry=(s1[i]-‘0’)*(s2[j]-‘0’)+result[i+j]-‘0’;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result[i+j]=carry%10+’0’;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carry/=10;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(carry)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result[i+len2]=carry%10+’0’;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carry=0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reverse(result.begin(),result.end());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(result[0]==’0’)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;result.substr(1)&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;result&lt;&lt;endl;<br>}</p>
 <p>src目录下的主文件内容如下：<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
 <pre><code>&gt; File Name: big_data_multi.cpp
@@ -200,9 +200,9 @@
 &gt; Created Time: Thu 21 Dec 2017 06:44:38 PM PST
 </code></pre><p> <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
 <p>#include “../myinclude/big_data_multi_head.h”</p>
-<p>#include <iostream></iostream></p>
-<p>#include <string><br>using std::string;<br>using std::cin;</string></p>
-<p>int main(int argc,char** argv){<br>    string s1,s2;<br>    while(cin&gt;&gt;s1&gt;&gt;s2)<br>        big_data_multi(s1,s2);<br>    return 0;<br>}</p>
+<p>#include &lt;iostream&gt;</p>
+<p>#include &lt;string&gt;<br>using std::string;<br>using std::cin;</p>
+<p>int main(int argc,char** argv){<br>&nbsp;&nbsp;&nbsp;&nbsp;string s1,s2;<br>&nbsp;&nbsp;&nbsp;&nbsp;while(cin&gt;&gt;s1&gt;&gt;s2)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;big_data_multi(s1,s2);<br>&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>}</p>
 <p>方式一：<br>编译的过程如下：<br>首先对big_data_multi_head.cpp文件进行编译，因为不事先编译这个文件，而直接编译主文件的话就会出错，出错原因是没有找到主文件调用的函数体。编译后的结果如下：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/2.png" alt="2"></p>
 <p>然后对主文件进行编译，形成可执行的main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/3.png" alt="3"></p>
 <p>最后执行main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/4.png" alt="4"></p>
