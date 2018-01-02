@@ -186,6 +186,7 @@
 <p>#define _BIG_DATA_MULTI_HEAD_H</p>
 <p>#include &lt;string&gt;<br>using std::string;<br>void big_data_multi(string,string);</p>
 <p>#endif</p>
+<!--read more-->
 <p>Myinclude下的源文件如下：<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
 <pre><code>&gt; File Name: big_data_multi.cpp
 &gt; Author: DWJ
@@ -276,7 +277,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>import pygal<br>from random import randint<br>from pylab import *<br>mpl.rcParams[‘font.sans-serif’] = [‘SimHei’]      #解决中文字体</p>
-<p>class Die():<br>&nbsp;&nbsp;&nbsp;&nbsp;def <strong>init</strong>(self,num_sides=6):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.num_sides = num_sides<br>&nbsp;&nbsp;&nbsp;&nbsp;def roll(self):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return randint(1,self.num_sides+1)</p>
+<p>class Die():<br>&nbsp;&nbsp;&nbsp;&nbsp;def <strong>init</strong>(self,num_sides=6):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.num_sides = num_sides<br>&nbsp;&nbsp;&nbsp;&nbsp;def roll(self):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return randint(1,self.num_sides+1)<br><!--read more--></p>
 <p>def rolling_result(die):<br>&nbsp;&nbsp;&nbsp;&nbsp;results = []<br>&nbsp;&nbsp;&nbsp;&nbsp;for roll_num in range(100000):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = die.roll()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;results.append(result)<br>&nbsp;&nbsp;&nbsp;&nbsp;return results</p>
 <p>def sides_frequency(die,results):<br>&nbsp;&nbsp;&nbsp;&nbsp;frequencies = []<br>&nbsp;&nbsp;&nbsp;&nbsp;for value in range(1,die.num_sides+1):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frequency = results.count(value)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frequencies.append(frequency)<br>&nbsp;&nbsp;&nbsp;&nbsp;return frequencies</p>
 <p>def drawing(frequencies):<br>&nbsp;&nbsp;&nbsp;&nbsp;hlist = pygal.Bar()<br>&nbsp;&nbsp;&nbsp;&nbsp;hlist.title = “置骰子10万次各个点数频率分布结果图”<br>&nbsp;&nbsp;&nbsp;&nbsp;hlist.x_labels = [‘1’,’2’,’3’,’4’,’5’,’6’]<br>&nbsp;&nbsp;&nbsp;&nbsp;hlist.x_title = “骰子的各个点数”<br>&nbsp;&nbsp;&nbsp;&nbsp;hlist.y_title = “频率分布”<br>&nbsp;&nbsp;&nbsp;&nbsp;hlist.add(‘D6’,frequencies)<br>&nbsp;&nbsp;&nbsp;&nbsp;hlist.render_to_file(‘die_visual_svg’)               #生成</p>
