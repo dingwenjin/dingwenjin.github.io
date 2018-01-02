@@ -175,10 +175,46 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Linux下多个C-文件链接编译<br></p>
-        
-          <a class="article-more-a" href="/2018/01/01/Linux下多个C-文件链接编译/#more">more >></a>
-        
+        <a id="more"></a>
+<p>一、首先在C++文件中创建两个文件夹，一个是myinclude，另一个是src。这里是大数相乘的程序，myinclude中是头文件(仅包含程序体)和它的源文件(实现部分)，src包含主函数。整体的目录结构如下：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/1.png" alt="1"></p>
+<p>Myinclude下的头文件如下：<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<pre><code>&gt; File Name: big_data_multi.h
+&gt; Author: DWJ
+&gt; Mail: 
+&gt; Created Time: Thu 21 Dec 2017 06:42:10 PM PST
+</code></pre><p> <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>#ifndef _BIG_DATA_MULTI_HEAD_H</p>
+<p>#define _BIG_DATA_MULTI_HEAD_H</p>
+<p>#include &lt;string&gt;<br>using std::string;<br>void big_data_multi(string,string);</p>
+<p>#endif</p>
+<p>Myinclude下的源文件如下：<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<pre><code>&gt; File Name: big_data_multi.cpp
+&gt; Author: DWJ
+&gt; Mail: 
+&gt; Created Time: Thu 21 Dec 2017 06:44:38 PM PST
+</code></pre><p> <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>#include &quot;big_data_multi_head.h&quot;</p>
+<p>#include &lt;iostream&gt;</p>
+<p>#include &lt;string&gt;</p>
+<p>#include &lt;algorithm&gt;<br>using namespace std;</p>
+<p>void big_data_multi(string s1,string s2) {<br>&nbsp;&nbsp;&nbsp;&nbsp;int len1=s1.size(),len2=s2.size(),i,j,carry=0;<br>&nbsp;&nbsp;&nbsp;&nbsp;string result(len1+len2,’0’);<br>&nbsp;&nbsp;&nbsp;&nbsp;reverse(s1.begin(),s1.end());<br>&nbsp;&nbsp;&nbsp;&nbsp;reverse(s2.begin(),s2.end());<br>&nbsp;&nbsp;&nbsp;&nbsp;for(i=0;i&lt;len1;i++){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(j=0;j&lt;len2;j++){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carry=(s1[i]-‘0’)*(s2[j]-‘0’)+result[i+j]-‘0’;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result[i+j]=carry%10+’0’;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carry/=10;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(carry)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result[i+len2]=carry%10+’0’;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carry=0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reverse(result.begin(),result.end());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(result[0]==’0’)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;result.substr(1)&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;result&lt;&lt;endl;<br>}</p>
+<p>src目录下的主文件内容如下：<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<pre><code>&gt; File Name: big_data_multi.cpp
+&gt; Author: DWJ
+&gt; Mail: 
+&gt; Created Time: Thu 21 Dec 2017 06:44:38 PM PST
+</code></pre><p> <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>#include &quot;../myinclude/big_data_multi_head.h&quot;</p>
+<p>#include &lt;iostream&gt;</p>
+<p>#include &lt;string&gt;<br>using std::string;<br>using std::cin;</p>
+<p>int main(int argc,char** argv){<br>&nbsp;&nbsp;&nbsp;&nbsp;string s1,s2;<br>&nbsp;&nbsp;&nbsp;&nbsp;while(cin&gt;&gt;s1&gt;&gt;s2)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;big_data_multi(s1,s2);<br>&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>}</p>
+<p>方式一：<br>编译的过程如下：<br>&nbsp;&nbsp;首先对big_data_multi_head.cpp文件进行编译，因为不事先编译这个文件，而直接编译主文件的话就会出错，出错原因是没有找到主文件调用的函数体。编译后的结果如下：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/2.png" alt="2"></p>
+<p>&nbsp;&nbsp;然后对主文件进行编译，形成可执行的main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/3.png" alt="3"></p>
+<p>&nbsp;&nbsp;最后执行main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/4.png" alt="4"></p>
+<p>方式二：<br>编译的过程如下：<br>&nbsp;&nbsp;首先对big_data_multi_head.cpp文件进行编译，因为不事先编译这个文件，而直接编译主文件的话就会出错，出错原因是没有找到主文件调用的函数体。编译后的结果如下：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/5.png" alt="5"></p>
+<p>&nbsp;&nbsp;然后对主文件进行编译，形成可执行的main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/6.png" alt="6"></p>
+<p>&nbsp;&nbsp;最后执行main文件：<br><img src="/2018/01/01/Linux下多个C-文件链接编译/7.png" alt="7"></p>
+
       
 
       
@@ -240,10 +276,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Python 置筛子结果<br></p>
-        
-          <a class="article-more-a" href="/2018/01/01/Python-置筛子结果/#more">more >></a>
-        
+        <a id="more"></a>
+<p>import pygal<br>from random import randint<br>from pylab import *<br>mpl.rcParams[‘font.sans-serif’] = [‘SimHei’]      #解决中文字体</p>
+<p>class Die():<br>&nbsp;&nbsp;&nbsp;&nbsp;def <strong>init</strong>(self,num_sides=6):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.num_sides = num_sides<br>&nbsp;&nbsp;&nbsp;&nbsp;def roll(self):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return randint(1,self.num_sides+1)</p>
+<p>def rolling_result(die):<br>&nbsp;&nbsp;&nbsp;&nbsp;results = []<br>&nbsp;&nbsp;&nbsp;&nbsp;for roll_num in range(100000):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = die.roll()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;results.append(result)<br>&nbsp;&nbsp;&nbsp;&nbsp;return results</p>
+<p>def sides_frequency(die,results):<br>&nbsp;&nbsp;&nbsp;&nbsp;frequencies = []<br>&nbsp;&nbsp;&nbsp;&nbsp;for value in range(1,die.num_sides+1):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frequency = results.count(value)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frequencies.append(frequency)<br>&nbsp;&nbsp;&nbsp;&nbsp;return frequencies</p>
+<p>def drawing(frequencies):<br>&nbsp;&nbsp;&nbsp;&nbsp;hlist = pygal.Bar()<br>&nbsp;&nbsp;&nbsp;&nbsp;hlist.title = “置骰子10万次各个点数频率分布结果图”<br>&nbsp;&nbsp;&nbsp;&nbsp;hlist.x_labels = [‘1’,’2’,’3’,’4’,’5’,’6’]<br>&nbsp;&nbsp;&nbsp;&nbsp;hlist.x_title = “骰子的各个点数”<br>&nbsp;&nbsp;&nbsp;&nbsp;hlist.y_title = “频率分布”<br>&nbsp;&nbsp;&nbsp;&nbsp;hlist.add(‘D6’,frequencies)<br>&nbsp;&nbsp;&nbsp;&nbsp;hlist.render_to_file(‘die_visual_svg’)               #生成</p>
+<p>def main():<br>&nbsp;&nbsp;&nbsp;&nbsp;die = Die()<br>&nbsp;&nbsp;&nbsp;&nbsp;results = rolling_result(die)<br>&nbsp;&nbsp;&nbsp;&nbsp;frequencies = sides_frequency(die,results)<br>&nbsp;&nbsp;&nbsp;&nbsp;drawing(frequencies)</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>&nbsp;&nbsp;&nbsp;&nbsp;main()</p>
+
       
 
       
