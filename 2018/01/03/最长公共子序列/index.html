@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="DWJ">
 <meta property="og:description" content="来源：牛客网">
 <meta property="og:image" content="http://yoursite.com/2018/01/03/最长公共子序列/1.png">
-<meta property="og:updated_time" content="2018-01-03T11:34:36.975Z">
+<meta property="og:updated_time" content="2018-01-03T11:42:58.114Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最长公共子序列">
 <meta name="twitter:description" content="来源：牛客网">
@@ -193,16 +193,19 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>来源：牛客网<br><a id="more"></a><br>链接：<a href="https://www.nowcoder.com/questionTerminal/b1112516673e463c9ed8943ae96e53f6" target="_blank" rel="noopener">https://www.nowcoder.com/questionTerminal/b1112516673e463c9ed8943ae96e53f6</a></p>
-<p>给出两个字符串（可能包含空格）,找出其中最长的公共连续子串,输出其长度。<br>输入描述:<br>输入为两行字符串（可能包含空格），长度均小于等于50.</p>
-<p>输出描述:<br>输出为一个整数，表示最长公共连续子串的长度。<br>示例1<br>输入<br>abcde<br>abgde<br>输出<br>2</p>
-<p>解题思想：</p>
-<p>DP问题，利用空间换时间，时间复杂度O(NM),空间O(NM)<br>思想：<br>创建一张二维表，本来这张表是用来存储字符A[i]和B[j]是否相等然后将表中(i,j)位置置为1。<br>遍历结束后，计算所有的对角线上连续1的个数，取最大值就是结果。但是现在，换种方法，<br>遍历的同时，计算当前斜对角的值，然后用一个变量res记录最大的值即可。<br>它的公式为：如果A[i - 1] == B[j - 1]，那么dp[i][j] = dp[i - 1][j - 1] + 1;<br>其中dp[0][…]和dp[…][0]都是0，这是初始状态。<br>例子：<br>字符串A：abcde<br>字符串B：abgde<br>表1<br>1   0   0   0   0<br>0   1   0   0   0<br>0   0   0   0   0<br>0   0   0   1   0<br>0   0   0   0   1<br>这个不可以直接得到结果，需要再遍历一次计算。<br>表2<br>0  0   0   0   0   0<br>0  1   0   0   0   0<br>0  0   2   0   0   0<br>0  0   0   0   0   0<br>0  0   0   0   1   0<br>0  0   0   0   0   2<br>这个可以直接得到结果，不需要再遍历一次计算。</p>
-<p>#include<iostream></iostream></p>
-<p>#include<string></string></p>
-<p>#include<vector></vector></p>
-<p>#include<algorithm><br>using namespace std;</algorithm></p>
-<p>void deal(string s1, string s2) {<br>    int i, j, len1 = s1.size(), len2 = s2.size(), max_len = 0;<br>    vector<vector<int> &gt; dp(len1+1,vector<int>(len2+1,0));<br>    for (i = 1; i &lt;= len1; i++) {<br>        for (j = 1; j &lt;= len2; j++) {<br>            if (s1[i - 1] == s2[j - 1])<br>                dp[i][j] = dp[i - 1][j - 1] + 1;<br>            if (dp[i][j] &gt; max_len)<br>                max_len = dp[i][j];<br>        }<br>    }<br>    cout &lt;&lt; max_len &lt;&lt; endl;<br>}</int></vector<int></p>
-<p>int main() {<br>    string s1, s2;<br>    while (getline(cin, s1)) {<br>        getline(cin, s2);<br>        deal(s1, s2);<br>    }<br>    system(“pause”);<br>    return 0;<br>}</p>
+<p>给出两个字符串（可能包含空格）,找出其中最长的公共连续子串,输出其长度。 </p>
+<p>输入描述:<br>输入为两行字符串（可能包含空格），长度均小于等于50.</p>
+<p>输出描述:<br>输出为一个整数，表示最长公共连续子串的长度。</p>
+<p>示例：<br>输入<br>abcde<br>abgde<br>输出<br>2</p>
+<p>解题思想：<br>&nbsp;&nbsp;&nbsp;&nbsp;创建一张二维表，本来这张表是用来存储字符A[i]和B[j]是否相等然后将表中(i,j)位置置为1。<br>遍历结束后，计算所有的对角线上连续1的个数，取最大值就是结果。但是现在，换种方法，<br>遍历的同时，计算当前斜对角的值，然后用一个变量res记录最大的值即可。<br>&nbsp;&nbsp;&nbsp;&nbsp;它的公式为：如果A[i - 1] == B[j - 1]，那么dp[i][j] = dp[i - 1][j - 1] + 1;其中dp[0][…]和dp[…][0]都是0，这是初始状态。</p>
+<p>例子：<br>字符串A：abcde<br>字符串B：abgde<br>表1<br>1   0   0   0   0<br>0   1   0   0   0<br>0   0   0   0   0<br>0   0   0   1   0<br>0   0   0   0   1<br>这个不可以直接得到结果，需要再遍历一次计算。</p>
+<p>表2<br>0  0   0   0   0   0<br>0  1   0   0   0   0<br>0  0   2   0   0   0<br>0  0   0   0   0   0<br>0  0   0   0   1   0<br>0  0   0   0   0   2<br>这个可以直接得到结果，不需要再遍历一次计算。</p>
+<p>#include &lt;iostream&gt;</p>
+<p>#include &lt;string&gt;</p>
+<p>#include &lt;vector&gt;</p>
+<p>#include &lt;algorithm&gt;<br>using namespace std;</p>
+<p>void deal(string s1, string s2) {<br>&nbsp;&nbsp;&nbsp;&nbsp;int i, j, len1 = s1.size(), len2 = s2.size(), max_len = 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;vector<vector<int> &gt; dp(len1+1,vector<int>(len2+1,0));<br>&nbsp;&nbsp;&nbsp;&nbsp;for (i = 1; i &lt;= len1; i++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (j = 1; j &lt;= len2; j++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (s1[i - 1] == s2[j - 1])<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[i][j] = dp[i - 1][j - 1] + 1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (dp[i][j] &gt; max_len)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max_len = dp[i][j];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; max_len &lt;&lt; endl;<br>}</int></vector<int></p>
+<p>int main() {<br>&nbsp;&nbsp;&nbsp;&nbsp;string s1, s2;<br>&nbsp;&nbsp;&nbsp;&nbsp;while (getline(cin, s1)) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getline(cin, s2);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deal(s1, s2);<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;system(“pause”);<br>&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>}</p>
 <p><img src="/2018/01/03/最长公共子序列/1.png" alt="1"></p>
 
       
