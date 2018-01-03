@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="DWJ">
 <meta property="og:description" content="来源：牛客网">
 <meta property="og:image" content="http://yoursite.com/2018/01/03/最长公共子序列/1.png">
-<meta property="og:updated_time" content="2018-01-03T11:42:58.114Z">
+<meta property="og:updated_time" content="2018-01-03T11:46:19.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最长公共子序列">
 <meta name="twitter:description" content="来源：牛客网">
@@ -204,7 +204,7 @@
 <p>#include &lt;string&gt;</p>
 <p>#include &lt;vector&gt;</p>
 <p>#include &lt;algorithm&gt;<br>using namespace std;</p>
-<p>void deal(string s1, string s2) {<br>&nbsp;&nbsp;&nbsp;&nbsp;int i, j, len1 = s1.size(), len2 = s2.size(), max_len = 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;vector<vector<int> &gt; dp(len1+1,vector<int>(len2+1,0));<br>&nbsp;&nbsp;&nbsp;&nbsp;for (i = 1; i &lt;= len1; i++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (j = 1; j &lt;= len2; j++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (s1[i - 1] == s2[j - 1])<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[i][j] = dp[i - 1][j - 1] + 1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (dp[i][j] &gt; max_len)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max_len = dp[i][j];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; max_len &lt;&lt; endl;<br>}</int></vector<int></p>
+<p>void deal(string s1, string s2) {<br>&nbsp;&nbsp;&nbsp;&nbsp;int i, j, len1 = s1.size(), len2 = s2.size(), max_len = 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;vector&lt;int&gt; &gt; dp(len1+1,vector&lt;int&gt;(len2+1,0));<br>&nbsp;&nbsp;&nbsp;&nbsp;for (i = 1; i &lt;= len1; i++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (j = 1; j &lt;= len2; j++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (s1[i - 1] == s2[j - 1])<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[i][j] = dp[i - 1][j - 1] + 1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (dp[i][j] &gt; max_len)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max_len = dp[i][j];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; max_len &lt;&lt; endl;<br>}</p>
 <p>int main() {<br>&nbsp;&nbsp;&nbsp;&nbsp;string s1, s2;<br>&nbsp;&nbsp;&nbsp;&nbsp;while (getline(cin, s1)) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getline(cin, s2);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deal(s1, s2);<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;system(“pause”);<br>&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>}</p>
 <p><img src="/2018/01/03/最长公共子序列/1.png" alt="1"></p>
 
